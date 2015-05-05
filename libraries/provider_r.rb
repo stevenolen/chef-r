@@ -1,5 +1,5 @@
 require 'chef/provider/lwrp_base'
-# require_relative 'helpers'
+require_relative 'helpers'
 
 class Chef
   class Provider
@@ -12,10 +12,15 @@ class Chef
       end
 
       # Mix in helpers from libraries/helpers.rb
-      # include R::Helpers
+      include RCookbook::Helpers
 
       action :create do
-        # no-op
+        configure_package_repositories
+
+        package "#{new_resource.name} :create R" do
+          package_name package_name
+          # action new_resource.package_action
+        end
       end
     end
   end
