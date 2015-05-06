@@ -17,9 +17,8 @@ class Chef
       action :create do
         configure_package_repositories
 
-        package "#{new_resource.name} :create R" do
-          package_name package_name
-          # action new_resource.package_action
+        package_name_list.each do |pkg|
+          package pkg
         end
       end
     end

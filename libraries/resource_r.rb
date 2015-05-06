@@ -8,11 +8,12 @@ class Chef
       default_action :create
 
       attribute :instance, kind_of: String, name_attribute: true
-      attribute :source, kind_of: [TrueClass, FalseClass], default: false
-      attribute :version, kind_of: String, default: '3.2.0'
-      attribute :directory, kind_of: String, default: '/usr/lib/R'
-      attribute :source_config, kind_of: String, default: nil
+      attribute :version, kind_of: String, default: nil
       attribute :site_profile, kind_of: Hash, default: nil
+      attribute :enable_cran_repo, kind_of: String, default: nil
+      attribute :source, kind_of: [TrueClass, FalseClass], default: false
+      attribute :source_dir, kind_of: String, default: '/usr/local/lib/R'
+      attribute :source_config, kind_of: String, default: nil
     end
   end
 end
