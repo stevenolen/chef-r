@@ -59,9 +59,14 @@ module RCookbook
       if new_resource.source
         # source install not yet supported
       else
-        # rhel x86-64 uses a different dir to install R...
-        return '/usr/lib64/R' if node['kernel']['machine']  == 'x86_64' && node['platform_family'] == 'rhel'
-        '/usr/lib/R'
+        case node['platform_family']
+        when 'rhel', 'fedora'
+          # rhel/fedora x86-64 uses a different dir to install R...
+          return '/usr/lib64/R' if node['kernel']['machine']  == 'x86_64'
+          '/usr/lib/R'
+        else
+          '/usr/lib/R'
+        end
       end
     end
   end

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'r_test::default' do
   cached(:chef_run) do
-    ChefSpec::ServerRunner.new(step_into: ['r', 'cran'])
+    ChefSpec::ServerRunner.new(step_into: %w(r cran))
       .converge(described_recipe)
   end
 
@@ -13,7 +13,7 @@ describe 'r_test::default' do
     before do
       stub_command("/usr/bin/R --slave -e 'old.packages(repos = c(\"http://cran.stat.ucla.edu\"))' | grep getopt").and_return(false)
     end
-    
+
     it 'installs r-base' do
       expect(chef_run).to install_package('r-base')
     end
@@ -27,11 +27,11 @@ describe 'r_test::default' do
     end
 
     it 'installs getopt R package' do
-      expect(chef_run).to run_execute("CRAN: create getopt")
+      expect(chef_run).to run_execute('CRAN: create getopt')
     end
 
     it 'does not upgrade getopt R package' do
-      expect(chef_run).to_not run_execute("CRAN: upgrade getopt")
+      expect(chef_run).to_not run_execute('CRAN: upgrade getopt')
     end
   end
 end
