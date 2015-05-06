@@ -20,6 +20,23 @@ class Chef
         package_name_list.each do |pkg|
           package pkg
         end
+
+        template "#{new_resource.instance}: creating Rprofile.site" do
+          cookbook 'R'
+          path "#{r_home}/etc/Rprofile.site"
+          source 'Rprofile.site.erb'
+          variables(
+            resource: new_resource
+          )
+        end
+      end
+
+      action :delete do
+        package_name_list.each do |pkg|
+          package pkg do
+            action :remove
+          end
+        end
       end
     end
   end

@@ -40,5 +40,24 @@ module RCookbook
         "#{node['lsb']['codename']}-cran3"
       end
     end
+
+    def cran_package_exists
+      "/usr/bin/R --slave -e 'find.package(\"#{new_resource.name}\")'"
+    end
+
+    def cran_install_package
+      return "/usr/bin/R --slave -e 'install.packages(\"#{new_resource.name}\", repos = c(\"#{new_resource.repo}\"))'" if new_resource.repo
+      "/usr/bin/R --slave -e 'install.packages(\"#{new_resource.name}\")'"
+    end
+
+    def r_home
+      if new_resource.source
+        # source install not yet supported
+      else
+        # rhel x86-64 uses a different dir to install R...
+        return '/usr/lib64/R' if node['kernel']['machine']  == 'x86_64' && node['platform_family'] == 'rhel'
+        '/usr/lib/R'
+      end
+    end
   end
 end

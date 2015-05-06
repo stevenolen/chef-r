@@ -1,0 +1,7 @@
+# Managed by Chef for node <%= node['fqdn'] -%>.
+
+local({
+<% @resource.site_profile.each do |opt| %>
+  <%= opt %>
+<% end -%>
+})

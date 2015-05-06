@@ -9,7 +9,7 @@ class Chef
 
       attribute :instance, kind_of: String, name_attribute: true
       attribute :version, kind_of: String, default: nil
-      attribute :site_profile, kind_of: Hash, default: nil
+      attribute :site_profile, kind_of: Array, default: []
       attribute :enable_cran_repo, kind_of: String, default: nil
       attribute :source, kind_of: [TrueClass, FalseClass], default: false
       attribute :source_dir, kind_of: String, default: '/usr/local/lib/R'

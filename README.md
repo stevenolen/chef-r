@@ -8,21 +8,27 @@ TODO: List your supported platforms.
 
 ## Usage
 
-### r_install
+### r
 
+```ruby
 r do
   source false
   version
   directory
-  site_profile_options
+  site_profile [
+    'r <- getOption("repos"); r["CRAN"] <- "http://cran.stat.ucla.edu/"; options(repos = r)'
+  ]
   source_config
 end
+```
 
 ### cran
 
+```ruby
 cran 'somepackage' do
   # can we support version?
 end
+```
 
 ## License and Authors
 
