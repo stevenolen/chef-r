@@ -5,12 +5,13 @@ module RCookbook
     def configure_package_repositories
       # we need to enable epel if centos,rhel. but not fedora.
       return unless %w(rhel).include? node['platform_family']
+      base_version = node['platform_version'][0]
       yum_repository 'epel' do
-        mirrorlist 'http://mirrors.fedoraproject.org/mirrorlist?repo=epel-6&arch=$basearch'
-        description 'Extra Packages for Enterprise Linux 6 - $basearch'
+        mirrorlist "http://mirrors.fedoraproject.org/mirrorlist?repo=epel-#{base_version}&arch=$basearch"
+        description "Extra Packages for Enterprise Linux #{base_version} - $basearch"
         enabled true
         gpgcheck true
-        gpgkey 'http://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-6'
+        gpgkey "http://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-#{base_version}"
       end
     end
 

@@ -4,7 +4,13 @@ Provides an LWRP interface for installing/configuring R as well as packages from
 
 ## Supported Platforms
 
-TODO: List your supported platforms.
+The functions of this cookbook have been verified in Test Kitchen on:
+  * Debian 7
+  * Ubuntu 14.04
+  * Ubuntu 12.04
+  * CentOS 6.4
+  * CentOS 7
+  * Fedora 21
 
 ## Usage
 
