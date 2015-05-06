@@ -7,3 +7,4 @@ long_description 'Installs/Configures R'
 version '0.1.0'
 
 depends 'yum'
+depends 'apt'
