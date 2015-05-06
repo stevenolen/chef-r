@@ -27,7 +27,7 @@ module RCookbook
     end
 
     def package_name_list
-      ['r-base', 'r-dev'] if node['platform_family'] == 'debian'
+      return ['r-base', 'r-base-dev'] if node['platform_family'] == 'debian'
       ['R']
     end
 
