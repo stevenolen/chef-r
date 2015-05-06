@@ -14,14 +14,14 @@ class Chef
       # Mix in helpers from libraries/helpers.rb
       include RCookbook::Helpers
 
-      action :create do
+      action :install do
         execute "CRAN: create #{new_resource.name}" do
           command cran_install_package
           not_if cran_package_exists
         end
       end
 
-      action :delete do
+      action :remove do
         execute "CRAN: delete #{new_resource.name}" do
           command "/usr/bin/R --slave -e 'remove.packages(\"#{new_resource.name}\")'"
           only_if cran_package_exists
@@ -31,7 +31,7 @@ class Chef
       action :upgrade do
         execute "CRAN: upgrade #{new_resource.name}" do
           command cran_install_package
-          # note the lack of idempotency.
+          only_if cran_package_outdated
         end
       end
     end

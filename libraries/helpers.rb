@@ -45,6 +45,11 @@ module RCookbook
       "/usr/bin/R --slave -e 'find.package(\"#{new_resource.name}\")'"
     end
 
+    def cran_package_outdated
+      return "/usr/bin/R --slave -e 'old.packages(repos = c(\"#{new_resource.repo}\"))' | grep #{new_resource.name}" if new_resource.repo
+      "/usr/bin/R --slave -e 'old.packages()' | grep #{new_resource.name}"
+    end
+
     def cran_install_package
       return "/usr/bin/R --slave -e 'install.packages(\"#{new_resource.name}\", repos = c(\"#{new_resource.repo}\"))'" if new_resource.repo
       "/usr/bin/R --slave -e 'install.packages(\"#{new_resource.name}\")'"

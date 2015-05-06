@@ -14,7 +14,7 @@ class Chef
       # Mix in helpers from libraries/helpers.rb
       include RCookbook::Helpers
 
-      action :create do
+      action :install do
         configure_package_repositories
 
         package_name_list.each do |pkg|
@@ -31,7 +31,7 @@ class Chef
         end
       end
 
-      action :delete do
+      action :remove do
         package_name_list.each do |pkg|
           package pkg do
             action :remove
