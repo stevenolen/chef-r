@@ -62,7 +62,7 @@ module RCookbook
         case node['platform_family']
         when 'rhel', 'fedora'
           # rhel/fedora x86-64 uses a different dir to install R...
-          return '/usr/lib64/R' if node['kernel']['machine']  == 'x86_64'
+          return '/usr/lib64/R' if node['kernel']['machine'] == 'x86_64'
           '/usr/lib/R'
         else
           '/usr/lib/R'
