@@ -26,12 +26,12 @@ end
 
 Slightly different functionality is allowed depending on your platform:
 
-  * `Debian/Ubuntu`
+  * Debian/Ubuntu
     * you may supply a url to `enable_cran_repo` if you'd like to install R from the cran repo (detailed at the [cran site](http://cran.r-project.org/)). if not supplied, the default packages (which may be older) will be used.
-  * `Fedora`
+  * Fedora
     * `enable_cran_repo` will be ignored
     * R will be installed from the standard Fedora repositories
-  * `RHEL/CentOS`
+  * RHEL/CentOS
     * `enable_cran_repo` will be ignored
     * The yum EPEL repository will be installed and R will be installed from EPEL.
 
