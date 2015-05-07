@@ -14,6 +14,10 @@ describe 'r_test::default' do
       stub_command("/usr/bin/R --slave -e 'old.packages(repos = c(\"http://cran.stat.ucla.edu\"))' | grep getopt").and_return(false)
     end
 
+    it 'adds cran.stat.ucla.edu apt repo' do
+      expect(chef_run).to add_apt_repository('cran.stat.ucla.edu')
+    end
+
     it 'installs r-base' do
       expect(chef_run).to install_package('r-base')
     end
