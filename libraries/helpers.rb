@@ -20,7 +20,7 @@ module RCookbook
       return unless %w(debian).include? node['platform_family']
       apt_repository new_resource.enable_cran_repo do
         uri "http://#{new_resource.enable_cran_repo}/bin/linux/#{node['platform']}"
-        distribution cran_apt_distribution
+        distribution "#{cran_apt_distribution}/"
         key '381BA480'
         keyserver 'keyserver.ubuntu.com'
         action :add
