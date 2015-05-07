@@ -21,8 +21,8 @@ module RCookbook
       apt_repository new_resource.enable_cran_repo do
         uri "http://#{new_resource.enable_cran_repo}/bin/linux/#{node['platform']}"
         distribution "#{cran_apt_distribution}/"
-        key '381BA480'
-        keyserver 'keyserver.ubuntu.com'
+        key cran_apt_key
+        keyserver 'keys.gnupg.net'
         action :add
       end
     end
@@ -30,6 +30,15 @@ module RCookbook
     def package_name_list
       return ['r-base', 'r-base-dev'] if node['platform_family'] == 'debian'
       ['R']
+    end
+
+    def cran_apt_key
+      case node['platform']
+      when 'ubuntu'
+        'E084DAB9'
+      when 'debian'
+        '381BA480'
+      end
     end
 
     def cran_apt_distribution
