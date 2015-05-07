@@ -16,6 +16,7 @@ class Chef
 
       action :install do
         configure_package_repositories
+        configure_cran_repo if new_resource.enable_cran_repo
 
         package_name_list.each do |pkg|
           package pkg
