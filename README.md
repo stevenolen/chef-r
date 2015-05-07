@@ -21,7 +21,7 @@ supports package installation.
 
 ```ruby
 r 'default' do
-  enable_cran_repo 'http://cran.stat.ucla.edu' # supported only on debian/ubuntu.
+  enable_cran_repo 'cran.stat.ucla.edu' # supported only on debian/ubuntu.
   site_profile [
     'r <- getOption("repos"); r["CRAN"] <- "http://cran.stat.ucla.edu/"; options(repos = r)'
   ]
