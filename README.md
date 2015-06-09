@@ -41,7 +41,7 @@ Slightly different functionality is allowed depending on your platform:
     * `enable_cran_repo` will be ignored
     * The yum EPEL repository will be installed and R will be installed from EPEL.
 
-The `site_profile` attribute is an Array of lines to be placed under `local({})` in your `Rprofile.site` file. Feel free to ignore this
+The `site_profile` attribute is an Array of lines to be placed in your `Rprofile.site` file. Feel free to ignore this
 attribute but you probably want to do something if you plan to use the `cran` LWRP.
 
 ### cran
