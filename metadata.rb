@@ -8,3 +8,6 @@ version '0.1.4'
 
 depends 'yum'
 depends 'apt'
+depends 'ark'
+depends 'build-essential'
+depends 'readline'

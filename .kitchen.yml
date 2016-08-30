@@ -12,20 +12,22 @@ platforms:
   - name: ubuntu-14.04
     run_list:
       - recipe[apt]
-  - name: ubuntu-12.04
-    run_list:
-      - recipe[apt]
-  - name: debian-7
-    run_list:
-      - recipe[apt]
-  - name: debian-8
-    run_list:
-      - recipe[apt]
-  - name: centos-6.4
-  - name: centos-7
-  - name: fedora-21
+  #- name: ubuntu-12.04
+  #  run_list:
+  #    - recipe[apt]
+  #- name: debian-7
+  #  run_list:
+  #    - recipe[apt]
+  #- name: debian-8
+  #  run_list:
+  #    - recipe[apt]
+  #- name: centos-6.4
+  #- name: centos-7
+  #- name: fedora-21
 
 
 suites:
   - name: default
     run_list: ['r_test::default']
+  - name: source
+    run_list: ['r_test::source']

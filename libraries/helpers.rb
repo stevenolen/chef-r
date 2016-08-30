@@ -79,5 +79,38 @@ module RCookbook
         end
       end
     end
+
+    def configure_source_deps
+
+      include_recipe 'build-essential'
+      include_recipe 'ark'
+      include_recipe 'readline' # we may not want to depend on this?
+
+      # from https://github.com/rstudio/chef-r/blob/master/recipes/source.rb
+      package 'gfortran'
+      #package 'liblzma-dev'
+      #package 'libpcre3-dev'
+      #package 'libcurl3-openssl-dev'
+      #
+      #ark "zlib" do
+      #  url "http://zlib.net/zlib-1.2.8.tar.gz"
+      #  version "1.2.8"
+      #  action [:install_with_make]
+      #end
+      #
+      #ark "bzip2" do
+      #  url "http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz"
+      #  version "1.0.6"
+      #  make_opts ['CFLAGS="-fpic -fPIC -Wall -Winline -O2 -g -D_FILE_OFFSET_BITS=64"']
+      #  action [:install_with_make]
+      #end
+      #
+      #ark "libcurl" do
+      #  url "https://curl.haxx.se/download/curl-7.47.1.tar.gz"
+      #  version "7.47.1"
+      #  autoconf_opts ["--with-ssl=/usr/include/openssl"]
+      #  action [:install_with_make]
+      #end
+    end
   end
 end
